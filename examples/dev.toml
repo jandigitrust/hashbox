@@ -1,0 +1,16 @@
+# Copy to .local/profiles/dev.toml, fill the placeholders, and chmod 600.
+schema = "hashbox.azure-profile/v4"
+name = "dev"
+subscription_id = "REPLACE_WITH_SUBSCRIPTION_UUID"
+location = "westeurope"
+
+[build]
+vm_size = "Standard_D8ds_v5"
+source_image_version = "auto"
+
+[deployment]
+vm_size = "Standard_DC2as_v5"
+
+[access]
+ssh_public_key = "~/.ssh/hashbox-demo.pub"
+ssh_source = "REPLACE_WITH_YOUR_PUBLIC_IPV4/32"

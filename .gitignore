@@ -1,0 +1,88 @@
+# HashBox-owned local state and generated evidence. These paths may contain
+# credentials, resource identifiers, logs, checkpoints, or large artifacts.
+/.local/
+/dist/
+/logs/
+/tmp/
+/.direnv/
+
+# Disk/image build products, detached checksums, and local key files.
+*.img
+*.iso
+*.qcow2
+*.raw
+*.vhd
+*.vhdx
+*.sha256
+*.pem
+*.key
+*.p12
+*.pfx
+*.kdbx
+
+# Python bytecode, test/tool caches, packaging products, and local environments.
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.coverage
+.coverage.*
+htmlcov/
+.mypy_cache/
+.pyre/
+.ruff_cache/
+.tox/
+.nox/
+/build/
+/develop-eggs/
+*.egg-info/
+/.eggs/
+/wheels/
+/target/
+/pip-wheel-metadata/
+/.venv/
+/venv/
+/env/
+
+# Local environment files. Examples remain publishable documentation.
+.env
+.env.*
+!.env.example
+!.env.sample
+.envrc
+
+# OpenTofu/Terraform local working data, plans, state, and operator overrides.
+# Dependency lock files (.terraform.lock.hcl) intentionally remain trackable.
+.terraform/
+*.tfstate
+*.tfstate.*
+*.tfplan
+*.tfvars
+*.tfvars.json
+*.auto.tfvars
+*.auto.tfvars.json
+!*.tfvars.example
+!*.tfvars.json.example
+.terraformrc
+terraform.rc
+crash.log
+crash.*.log
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+
+# Azure CLI state is external to the repository; this protects an explicitly
+# redirected local config as well as the normal HashBox state directory.
+/.azure/
+
+# Common editor/OS metadata. Logs are ignored only in /logs or /.local so a
+# deliberately checked-in diagnostic fixture is not hidden by extension.
+/.vscode/
+/.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+._*
+Thumbs.db

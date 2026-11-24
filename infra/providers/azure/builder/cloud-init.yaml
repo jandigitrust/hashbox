@@ -1,0 +1,19 @@
+#cloud-config
+ssh_pwauth: false
+disable_root: true
+write_files:
+  - path: /etc/ssh/sshd_config.d/99-hashbox-key-only.conf
+    owner: root:root
+    permissions: '0644'
+    content: |
+      PermitRootLogin no
+      PasswordAuthentication no
+      KbdInteractiveAuthentication no
+      PubkeyAuthentication yes
+package_update: true
+packages:
+  - ca-certificates
+  - make
+runcmd:
+  - [ systemctl, reload, ssh.service ]
+  - [ sh, -c, "touch /var/lib/hashbox-builder-ready" ]

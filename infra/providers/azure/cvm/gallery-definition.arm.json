@@ -1,0 +1,42 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "metadata": {"description": "Gen2 Linux image supporting custom UEFI DB and Confidential VM deployment."},
+  "parameters": {
+    "galleryName": {"type": "string"},
+    "imageDefinitionName": {"type": "string"},
+    "location": {"type": "string"},
+    "resourceTags": {"type": "object"}
+  },
+  "resources": [
+    {
+      "type": "Microsoft.Compute/galleries/images",
+      "apiVersion": "2025-03-03",
+      "name": "[format('{0}/{1}', parameters('galleryName'), parameters('imageDefinitionName'))]",
+      "location": "[parameters('location')]",
+      "properties": {
+        "description": "HashBox generalized Gen2 Secure Boot CVM demo image",
+        "osType": "Linux",
+        "osState": "Generalized",
+        "hyperVGeneration": "V2",
+        "architecture": "x64",
+        "identifier": {
+          "publisher": "HashBox",
+          "offer": "HashBoxDemo",
+          "sku": "secureboot-cvm"
+        },
+        "features": [
+          {"name": "SecurityType", "value": "TrustedLaunchAndConfidentialVmSupported"},
+          {"name": "DiskControllerTypes", "value": "SCSI"}
+        ]
+      },
+      "tags": "[parameters('resourceTags')]"
+    }
+  ],
+  "outputs": {
+    "imageDefinitionId": {
+      "type": "string",
+      "value": "[resourceId('Microsoft.Compute/galleries/images', parameters('galleryName'), parameters('imageDefinitionName'))]"
+    }
+  }
+}

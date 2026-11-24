@@ -1,0 +1,29 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "metadata": {"description": "One private Azure Compute Gallery in a run-owned demo resource group."},
+  "parameters": {
+    "galleryName": {"type": "string"},
+    "location": {"type": "string"},
+    "resourceTags": {"type": "object"}
+  },
+  "resources": [
+    {
+      "type": "Microsoft.Compute/galleries",
+      "apiVersion": "2025-03-03",
+      "name": "[parameters('galleryName')]",
+      "location": "[parameters('location')]",
+      "properties": {
+        "description": "Run-owned HashBox Secure Boot CVM demo Gallery",
+        "softDeletePolicy": {"isSoftDeleteEnabled": false}
+      },
+      "tags": "[parameters('resourceTags')]"
+    }
+  ],
+  "outputs": {
+    "galleryId": {
+      "type": "string",
+      "value": "[resourceId('Microsoft.Compute/galleries', parameters('galleryName'))]"
+    }
+  }
+}

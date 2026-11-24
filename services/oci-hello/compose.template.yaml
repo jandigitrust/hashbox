@@ -1,0 +1,18 @@
+name: hashbox-hello
+x-hashbox:
+  frontend: hello
+services:
+  hello:
+    image: "sha256:REPLACE_WITH_NEW_MANIFEST_DIGEST"
+    user: "65532:65532"
+    read_only: true
+    cap_drop: [ALL]
+    security_opt: ["no-new-privileges:true"]
+    mem_limit: 64
+    cpus: 1
+    pids_limit: 64
+    ports:
+      - target: 80
+        published: 18080
+        external: 8080
+        protocol: tcp

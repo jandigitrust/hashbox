@@ -1,0 +1,11 @@
+{
+  "schema": "hashbox.attestor-source/v1",
+  "repository": "https://github.com/jandigitrust/attestor.git",
+  "track": "refs/heads/main",
+  "version": "0.2.0",
+  "commit": "88e8c5ba79f0cb9f6600a6b3ef5698ac00808609",
+  "tree": "1516af647a52d68ec12c2e7217006b7f13f8fba6",
+  "cargo_lock_sha256": "cd10dcecdc3b7fc3afd170eb037d7af6ccad04f4a749348c96ce4b9c88cd1b30",
+  "cargo_toml_sha256": "310815ff44dc2837906ba2d84fb02480bf16400cc1128d10c3f220b8b2600244",
+  "license_sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4"
+}

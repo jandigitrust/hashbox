@@ -1,0 +1,25 @@
+#!/bin/sh
+# Install the checkout-based CLI in an ignored local virtual environment.
+set -eu
+
+project_dir=$(CDPATH= cd -- "$(dirname -- "$0")/.." && pwd)
+python=${HASHBOX_PYTHON:-python3}
+
+"$python" -c 'import sys; sys.exit(0 if sys.version_info >= (3, 11) else "Python 3.11 or newer is required")'
+"$python" -m venv "$project_dir/.venv"
+cat > "$project_dir/.venv/bin/hashbox" <<'WRAPPER'
+#!/bin/sh
+set -eu
+venv_bin=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)
+project_dir=$(CDPATH= cd -- "$venv_bin/../.." && pwd)
+exec "$venv_bin/python" -I -B "$project_dir/src/hashbox/cli/bootstrap.py" "$@"
+WRAPPER
+chmod 755 "$project_dir/.venv/bin/hashbox"
+
+printf '\nCLI ready: %s/.venv/bin/hashbox --help\n' "$project_dir"
+printf 'Next: copy examples/dev.toml to .local/profiles/dev.toml and configure Azure.\n'
+for tool in az tofu ssh scp ssh-keygen ssh-keyscan; do
+    if ! command -v "$tool" >/dev/null 2>&1; then
+        printf 'Before an Azure run, install the missing host command: %s\n' "$tool"
+    fi
+done

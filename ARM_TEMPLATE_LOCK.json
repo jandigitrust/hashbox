@@ -1,0 +1,10 @@
+{
+  "schema": "hashbox.demo-arm-template-lock/v1",
+  "revision": 4,
+  "templates": {
+    "infra/providers/azure/cvm/gallery.arm.json": "94832cdc8ca3848f31b770b9a63896e22072e957c2f448baeeb63d06c5bd87af",
+    "infra/providers/azure/cvm/gallery-definition.arm.json": "10974a5d126efb34b3c82ee0833df8b4f382e82214682abd887f45e148de1126",
+    "infra/providers/azure/cvm/staging.arm.json": "184cc6a411785c39efdd01ba9af93b7506e251b6f291daafec39eb7c6c5c937d",
+    "infra/providers/azure/deployment/cvm.arm.json": "90afc635f73b6f6e5f7a37422960fcc64e81cdad95df1cc6d63c2d39374abe60"
+  }
+}

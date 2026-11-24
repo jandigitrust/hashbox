@@ -1,0 +1,5 @@
+#!/bin/sh
+set -eu
+
+project_dir=$(CDPATH= cd -- "$(dirname -- "$0")/.." && pwd)
+exec "${HASHBOX_PYTHON:-python3}" -I -B "$project_dir/src/hashbox/cli/bootstrap.py" "$@"
